@@ -27,6 +27,36 @@ Usuário informará o CEP e como resultado, deverá obter o nome da RUA, BAIRRO,
 - Fique a vontade para entrar em contato e tirar dúvidas;
 
 
-## Solução
- 
+### Solução
+
+Partindo da premissa de um site existente, onde já temos disponível um serviço de busca de CEP, a solução terá como objetivo **expor o mesmo por um tipo de webservice**.
+
+Portanto, a primeira etapa será separarmos esta funcionalidade existente entre a camada de negócio (a busca efetiva do CEP) e a responsável por expor o webservice, diminuindo o acoplamento e responsabilidade de cada objeto.
+
+Como o objetivo é apenas expormos em um tipo de webservice utilizando JSON, adotou-se o padrão Web Service [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) ao invés do SOAP, por ser mais simples e também adequado à proposta. Utilizou-se o framework **Jersey** como responsável por expor o webservice RESTful.
+
+O serviço foi disponibilizado em `**services/cep/**`. Veja exemplo:
+
+```
+GET services/cep/22333999
+
+200 OK
+
+{
+ "CEP" : {
+  RUA : "Rua Xxxxxx",
+  BAIRRO : "Xxxxx",
+  CIDADE : "Xxxxx",
+  ESTADO : "XX"
+ }
+}
+
+ou em caso de não encontrar
+
+422 CEP inválido
+
+```
+
+
+
 
