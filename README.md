@@ -35,7 +35,7 @@ Portanto, a primeira etapa será separarmos esta funcionalidade existente entre 
 
 Como o objetivo é apenas expormos em um tipo de webservice utilizando JSON, adotou-se o padrão Web Service [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) ao invés do SOAP, por ser mais simples e também adequado à proposta. Utilizou-se o framework **Jersey** como responsável por expor o webservice RESTful.
 
-O serviço foi disponibilizado em `**services/cep/**`. Veja exemplo:
+O serviço foi disponibilizado em `services/cep/`. Veja exemplo:
 
 ```
 GET services/cep/22333999
