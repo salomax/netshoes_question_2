@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.com.netshoes.question1.dao.cep;
 
 import java.util.HashMap;
@@ -9,7 +6,7 @@ import java.util.Map;
 import br.com.netshoes.question1.entity.cep.EnderecoEntity;
 
 /**
- * Implementação de exemplo no padrão DAO para busca de endereços pelo CEP.
+ * Implementação de exemplo no padrão DAO para CRUD de CEPs.
  * 
  * @author salomao.marcos@gmail.com
  */

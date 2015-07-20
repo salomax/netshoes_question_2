@@ -1,6 +1,8 @@
 package br.com.netshoes.question1.exception.cep;
 
 /**
+ * Exceção CEP inválido.
+ * 
  * @author salomao.marcos@gmail.com
  *
  */

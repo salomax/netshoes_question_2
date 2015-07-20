@@ -16,12 +16,17 @@ import br.com.netshoes.question1.exception.cep.CEPInvalidoException;
 public class CEPInvalidoExceptionMapper implements ExceptionMapper<CEPInvalidoException> {
 
 	/**
+	 * Mensagem de erro padrão.
+	 */
+	private static final String MSG_ERRO = "CEP invalido";
+
+	/**
 	 * Resposta padrão.
 	 */
 	@Override
 	public Response toResponse(CEPInvalidoException arg0) {
 		return Response.status(422)
-				.entity("CEP invalido")
+				.entity(MSG_ERRO)
 				.type(MediaType.TEXT_PLAIN)
 				.build();
 	}

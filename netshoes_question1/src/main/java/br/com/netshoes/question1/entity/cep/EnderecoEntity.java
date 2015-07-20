@@ -3,7 +3,7 @@ package br.com.netshoes.question1.entity.cep;
 import java.io.Serializable;
 
 /**
- * Entidade que representa um CEP.
+ * Entidade que representa um endereço.
  * 
  * @author salomao.marcos@gmail.com
  *
