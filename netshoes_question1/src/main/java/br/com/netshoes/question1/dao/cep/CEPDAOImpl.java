@@ -15,27 +15,41 @@ public class CEPDAOImpl implements CEPDao {
 	/**
 	 * Map contendos os CEPs cadastrados e seus respectivos endereços.
 	 */
-	private static Map<String, EnderecoEntity> enderecos = new HashMap<String, EnderecoEntity>();
+	private Map<String, EnderecoEntity> enderecos;
 	
+	/**
+	 * Construtor padrão.
+	 */
+	public CEPDAOImpl() {
+		this.enderecos = new HashMap<String, EnderecoEntity>();
+	}
+	
+	/**
+	 * Construtor passando os valores dos endereços.
+	 */
+	public CEPDAOImpl(HashMap<String, EnderecoEntity> enderecos) {
+		this.enderecos = enderecos;
+	}
+
 	/**
 	 * Buscar endereço pelo CEP.
 	 */
 	public EnderecoEntity buscarEnderecoPorCEP(String cep) {
-		return CEPDAOImpl.enderecos.get(cep);
+		return this.enderecos.get(cep);
 	}
 	
 	/**
 	 * Incluir novo endereço pelo CEP.
 	 */
 	public void addEnderecoPorCEP(String cep, EnderecoEntity enderecoEntity) {
-		CEPDAOImpl.enderecos.put(cep, enderecoEntity);
+		this.enderecos.put(cep, enderecoEntity);
 	}
 
 	/**
 	 * Remover endereço existente pelo CEP.
 	 */
 	public void removeEnderecoPorCEP(String cep, EnderecoEntity enderecoEntity) {
-		CEPDAOImpl.enderecos.remove(cep);
+		this.enderecos.remove(cep);
 	}
 
 }

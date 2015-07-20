@@ -18,7 +18,7 @@ public class CEPInvalidoExceptionMapper implements ExceptionMapper<CEPInvalidoEx
 	/**
 	 * Mensagem de erro padrão.
 	 */
-	private static final String MSG_ERRO = "CEP invalido";
+	private static final String MSG_ERRO = "CEP inválido";
 
 	/**
 	 * Resposta padrão.

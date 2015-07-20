@@ -28,7 +28,7 @@ public class CEPResource {
 	 */
 	@Autowired
 	private CEPService cepService;
-
+	
 	/**
 	 * Buscar endereço por um CEP válido.
 	 * 
