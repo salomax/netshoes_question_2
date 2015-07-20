@@ -39,7 +39,6 @@ O serviço foi disponibilizado em `services/cep/`. Veja exemplo:
 
 ```
 GET services/cep/22333999
-
 200 OK
 
 {
@@ -50,11 +49,12 @@ GET services/cep/22333999
   ESTADO : "XX"
  }
 }
+```
 
-ou em caso de não encontrar
+ou em caso de não encontrar um CEP válido...
 
+```
 422 CEP inválido
-
 ```
 
 
