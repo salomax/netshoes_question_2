@@ -1,5 +1,6 @@
 package br.com.netshoes.question2.dao.endereco;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -20,7 +21,7 @@ public class InMemoryEnderecoDAOImpl implements EnderecoDAO {
 	/**
 	 * Map representando o repositório
 	 */
-	private Map<String, EnderecoEntity> repositorio = new HashMap<String, EnderecoEntity>();
+	private static Map<String, EnderecoEntity> repositorio = new HashMap<String, EnderecoEntity>();
 	
 	/**
 	 * Salvar um endereço.
@@ -38,7 +39,7 @@ public class InMemoryEnderecoDAOImpl implements EnderecoDAO {
 		}
 
 		// Registrar no repositorio
-		this.repositorio.put(endereco.getId(), endereco);
+		InMemoryEnderecoDAOImpl.repositorio.put(endereco.getId(), endereco);
 
 	}
 	
@@ -50,12 +51,12 @@ public class InMemoryEnderecoDAOImpl implements EnderecoDAO {
 	public void remover(String id) throws EnderecoInvalidoException {
 		
 		// Validar se o o endereço está registrado
-		if (!this.repositorio.containsKey(id)) {
+		if (!InMemoryEnderecoDAOImpl.repositorio.containsKey(id)) {
 			throw new EnderecoInvalidoException(String.format("Endereço não registrado."));
 		}
 		
 		// Retornar 
-		this.repositorio.remove(id);
+		InMemoryEnderecoDAOImpl.repositorio.remove(id);
 
 	}
 	
@@ -67,13 +68,22 @@ public class InMemoryEnderecoDAOImpl implements EnderecoDAO {
 	public EnderecoEntity selecionar(String id) throws EnderecoInvalidoException {
 		
 		// Validar se o o endereço está registrado
-		if (!this.repositorio.containsKey(id)) {
+		if (!InMemoryEnderecoDAOImpl.repositorio.containsKey(id)) {
 			throw new EnderecoInvalidoException(String.format("Endereço não registrado."));
 		}
 		
 		// Retornar 
-		return this.repositorio.get(id);
+		return InMemoryEnderecoDAOImpl.repositorio.get(id);
 
+	}
+	
+	/**
+	 * Listar endereços cadastrados.
+	 */
+	public Collection<EnderecoEntity> listar() {
+		
+		return InMemoryEnderecoDAOImpl.repositorio.values();
+		
 	}
 
 	/**

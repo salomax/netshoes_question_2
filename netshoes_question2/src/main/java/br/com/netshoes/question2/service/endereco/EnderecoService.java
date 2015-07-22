@@ -1,6 +1,9 @@
 package br.com.netshoes.question2.service.endereco;
 
+import java.util.Collection;
+
 import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
+import br.com.netshoes.question2.exception.cep.CEPInvalidoException;
 import br.com.netshoes.question2.exception.endereco.EnderecoInvalidoException;
 
 /**
@@ -14,7 +17,7 @@ public interface EnderecoService {
 	/**
 	 * Salvar um endereço.
 	 */
-	public void salvar(EnderecoEntity endereco) throws EnderecoInvalidoException;
+	public void salvar(EnderecoEntity endereco) throws EnderecoInvalidoException, CEPInvalidoException;
 	
 	/**
 	 * Selecionar um endereço pelo id.
@@ -25,5 +28,10 @@ public interface EnderecoService {
 	 * Selecionar um endereço pelo id.
 	 */
 	public EnderecoEntity selecionar(String id) throws EnderecoInvalidoException;
+	
+	/**
+	 * Listar endereços cadastrados.
+	 */
+	public Collection<EnderecoEntity> listar();
 
 }

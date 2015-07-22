@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="salomao.marcos@gmail.com">
     
-	<title>Netshoes Questão 1</title>
+	<title>Netshoes Questão 2</title>
     
     <!-- Bootstrap style -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -23,27 +23,47 @@
 	   </h1>
 	</div>
   	
-  	<div class="container">
+  	<div class="container" ng-controller="enderecoControl">
 	  	<div class="alert alert-info">
 	  		Foram "mockados" os CEPs 22333999 e 22333000.
 	  	</div>
-  		<form ng-controller="enderecoControl" role="form">
+  		<form name="enderecoForm" role="form">
+		  	<div class="alert alert-success" ng-show="mensagemSuccess != null">
+		  		{{ mensagemSuccess }}
+		  	</div>
+		  	<div class="alert alert-danger" ng-show="mensagemError != null">
+		  		{{ mensagemError }}
+		  	</div>
 		  	<div class="form-group">
-	  			<label>CEP</label> 
+	  			<label>CEP*</label> 
 		  		<div class="form-inline">
 		  			<input  ng-model="endereco.cep" type="text" class="form-control" required /> 
 		  			<input type="button" value="Buscar CEP" class="btn btn-default" ng-click="buscarEnderecoPorCEP(endereco.cep)" /> 
-		  			{{ mensagem }}
 		  		</div>
 	  		</div>
-	  		<div class="form-group"><label>Rua</label> <input type="text" class="form-control" ng-model="endereco.rua" /></div>
-	  		<div class="form-group"><label>Número</label> <input type="text" class="form-control" ng-model="endereco.numero" /></div>
+	  		<div class="form-group"><label>Rua*</label> <input type="text" class="form-control" ng-model="endereco.rua" required/></div>
+	  		<div class="form-group"><label>Número*</label> <input type="text" class="form-control" ng-model="endereco.numero" required/></div>
 	  		<div class="form-group"><label>Complemento</label>   <input type="text" class="form-control" ng-model="endereco.complemento" /></div>
 	  		<div class="form-group"><label>Bairro</label>   <input type="text" class="form-control" ng-model="endereco.bairro" /></div>
-	  		<div class="form-group"><label>Cidade</label>   <input type="text" class="form-control" ng-model="endereco.cidade" /></div>
-	  		<div class="form-group"><label>Estado</label>   <input type="text" class="form-control" ng-model="endereco.estado" /></div>
-	  		<div class="form-group"><button type="submit" class="btn btn-primary" ng-click="salvarEndereco(endereco)">Salvar</button> <button type="button" class="btn btn-danger">Excluir</button></div>
-	  	</form>	
+	  		<div class="form-group"><label>Cidade*</label>   <input type="text" class="form-control" ng-model="endereco.cidade" required/></div>
+	  		<div class="form-group"><label>Estado*</label>   <input type="text" class="form-control" ng-model="endereco.estado" required/></div>
+	  		<div class="form-group"><button type="submit" class="btn btn-primary" ng-click="salvarEndereco(endereco)">Salvar</button> <button type="button" class="btn btn-danger" ng-click="removerEndereco(endereco)">Excluir</button></div>
+	  	</form>
+	  	<h3>Lista de Endereços do Usuário</h3>
+	  	<table class="table table-striped">
+			<tr>
+				<th>Endereço</th>
+				<th>Cidade</th>
+				<th>Estado</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="e in enderecos">
+				<td>{{ e.rua }}, {{ e.numero }}</td>
+				<td>{{ e.cidade }}</td>
+				<td>{{ e.estado }}</td>
+				<td><button type="button" class="btn btn-default" ng-click="selecionarEndereco(e)">Alterar</button></td>
+			</tr>	  		
+	  	</table>
   	</div>
   	
 	<!-- jQuery and Bootstrap library -->
@@ -51,72 +71,9 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   	
 	<!-- AngularJS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js" charset="utf-8"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.min.js" charset="utf-8"></script>
+	<script src="js/app.js" charset="utf-8"></script>
 	
-	<script type="text/javascript">
-	
-	// module
-	var app = angular.module('cepApp', ['ngResource']);
-	
-	// controller
-	app.controller('enderecoControl', function($scope, $resource) {
-		
-		/**
-		 * Método para buscar o endereço do CEP.
-		 */
-		$scope.buscarEnderecoPorCEP	= function(_cep) {
-			 
-			 $scope.endereco = null;
-
-			 if (_cep == undefined || _cep == '') {
-				 $scope.mensagem = 'CEP é obrigatório!';
-				 return;
-			 }
-			 
-			console.log('Buscando o endereço do CEP: ' + _cep);
-
-			// Criando resource REST para o CEP
-			var cepResource = $resource('services/cep/:cep', {
-				cep: _cep,
-				isArray: false
-			});
-		
-			// Efetuando a requisição GET no servidor
-			cepResource.get().$promise.then(
-	    			function(endereco) {
-	    				$scope.endereco = endereco;
-	    			}, function(error) {
-			    		console.log('Ocorreu um erro ao buscar o CEP: ' + error.data);
-			    		$scope.mensagem = error.data;
-			    	});
-			
-		};
-		
-		/**
-		 * Método para salvar o endereço do usuário.
-		 */
-		$scope.salvarEndereco = function(_endereco) {
-			 
-			console.log('Salvando endereço.');
-
-			// Criando resource REST para o CEP
-			var cepResource = $resource('services/endereco');
-		
-			// Efetuando a requisição GET no servidor
-			cepResource.save(_endereco).$promise.then(
-	    			function(_endereco) {
-	    				$scope.endereco = _endereco;
-	    			}, function(error) {
-			    		console.log('Ocorreu um erro ao salvar o endereço: ' + error.data);
-			    		$scope.mensagem = error.data;
-			    	});
-			
-		};
-	
-	});
-	
-	</script>
-    
 </body>
 </html>

@@ -1,5 +1,7 @@
 package br.com.netshoes.question2.dao.endereco;
 
+import java.util.Collection;
+
 import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 import br.com.netshoes.question2.exception.endereco.EnderecoInvalidoException;
 
@@ -25,5 +27,10 @@ public interface EnderecoDAO {
 	 * Selecionar um endereço pelo id.
 	 */
 	public EnderecoEntity selecionar(String id) throws EnderecoInvalidoException;
+	
+	/**
+	 * Listar endereços cadastrados.
+	 */
+	public Collection<EnderecoEntity> listar();
 	
 }
