@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.com.netshoes</groupId>
-  <artifactId>netshoes_question1</artifactId>
+  <artifactId>netshoes_question2</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>netshoes_question1 Maven Webapp</name>
+  <name>netshoes_question2 Maven Webapp</name>
 
 	<properties>
 		<junit.version>4.12</junit.version>
@@ -48,6 +48,13 @@
 		<scope>test</scope>
 	</dependency>
 
+	<!-- Spring JDBC -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${spring3.version}</version>
+	</dependency>
+		
 	<!-- Jersey RESTful -->
 	<dependency>
 	    <groupId>org.glassfish.jersey.containers</groupId>

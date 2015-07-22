@@ -1,4 +1,4 @@
-package br.com.netshoes.question2.entity.cep;
+package br.com.netshoes.question2.entity.endereco;
 
 import java.io.Serializable;
 
@@ -16,14 +16,34 @@ public class EnderecoEntity implements Serializable {
 	private static final long serialVersionUID = 8684785589943206620L;
 
 	/**
+	 * Id.
+	 */
+	private String id;
+	
+	/**
+	 * CEP.
+	 */
+	private String CEP;
+	
+	/**
 	 * Rua.
 	 */
 	private String rua;
 	
 	/**
+	 * Número.
+	 */
+	private String numero;
+	
+	/**
 	 * Bairro.
 	 */
 	private String bairro;
+	
+	/**
+	 * Complemento.
+	 */
+	private String complemento;
 	
 	/**
 	 * Cidade.
@@ -89,6 +109,62 @@ public class EnderecoEntity implements Serializable {
 	 */
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the cEP
+	 */
+	public String getCEP() {
+		return CEP;
+	}
+
+	/**
+	 * @param cEP the cEP to set
+	 */
+	public void setCEP(String cep) {
+		CEP = cep;
+	}
+
+	/**
+	 * @return the numero
+	 */
+	public String getNumero() {
+		return numero;
+	}
+
+	/**
+	 * @param numero the numero to set
+	 */
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	/**
+	 * @return the complemento
+	 */
+	public String getComplemento() {
+		return complemento;
+	}
+
+	/**
+	 * @param complemento the complemento to set
+	 */
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 	
 }

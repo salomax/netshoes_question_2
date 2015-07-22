@@ -1,4 +1,4 @@
-package br.com.netshoes.question1.test;
+package br.com.netshoes.question2.test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.netshoes.question2.dao.cep.CEPDao;
-import br.com.netshoes.question2.entity.cep.EnderecoEntity;
+import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 import br.com.netshoes.question2.exception.cep.CEPInvalidoException;
 import br.com.netshoes.question2.service.cep.CEPService;
 

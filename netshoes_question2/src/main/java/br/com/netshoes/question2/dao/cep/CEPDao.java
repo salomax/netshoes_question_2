@@ -1,6 +1,6 @@
 package br.com.netshoes.question2.dao.cep;
 
-import br.com.netshoes.question2.entity.cep.EnderecoEntity;
+import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 
 /**
  * Interface no padrão DAO para busca de endereços pelo CEP.

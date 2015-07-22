@@ -3,7 +3,7 @@ package br.com.netshoes.question2.dao.cep;
 import java.util.HashMap;
 import java.util.Map;
 
-import br.com.netshoes.question2.entity.cep.EnderecoEntity;
+import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 
 /**
  * Implementação de exemplo no padrão DAO para CRUD de CEPs.

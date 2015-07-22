@@ -3,7 +3,7 @@
  */
 package br.com.netshoes.question2.service.cep;
 
-import br.com.netshoes.question2.entity.cep.EnderecoEntity;
+import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 import br.com.netshoes.question2.exception.cep.CEPInvalidoException;
 
 /**

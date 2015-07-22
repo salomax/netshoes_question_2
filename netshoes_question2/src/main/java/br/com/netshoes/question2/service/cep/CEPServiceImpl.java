@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.netshoes.question2.dao.cep.CEPDao;
-import br.com.netshoes.question2.entity.cep.EnderecoEntity;
+import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 import br.com.netshoes.question2.exception.cep.CEPInvalidoException;
 
 /**

@@ -16,6 +16,8 @@
     <bean id="cepDao" class="br.com.netshoes.question2.dao.cep.CEPDAOImpl">
 		<constructor-arg ref="enderecosMap" />
     </bean>
+    <bean id="enderecoDAO" class="br.com.netshoes.question2.dao.endereco.InMemoryEnderecoDAOImpl"/>
+    <bean id="enderecoService" class="br.com.netshoes.question2.service.endereco.EnderecoServiceImpl"/>
     
     <!-- Mock cep e endereços -->
     <util:map id="enderecosMap">
@@ -23,22 +25,20 @@
     	<entry key="22333000" value-ref="endereco2" />
     </util:map>
     
-    <bean id="endereco1" class="br.com.netshoes.question2.entity.cep.EnderecoEntity">
+    <bean id="endereco1" class="br.com.netshoes.question2.entity.endereco.EnderecoEntity">
+    	<property name="CEP" value="22333999"/>
     	<property name="rua" value="Paulista"/>
     	<property name="bairro" value="Cerqueira Cesar"/>
     	<property name="cidade" value="São Paulo"/>
     	<property name="estado" value="SP"/>
     </bean>
 
-    <bean id="endereco2" class="br.com.netshoes.question2.entity.cep.EnderecoEntity">
+    <bean id="endereco2" class="br.com.netshoes.question2.entity.endereco.EnderecoEntity">
+    	<property name="CEP" value="22333000"/>
     	<property name="rua" value="Bento Gonçalves"/>
     	<property name="bairro" value="Jardim"/>
     	<property name="cidade" value="Porto Alegre"/>
     	<property name="estado" value="RS"/>
     </bean>
         
-    <!-- REST Config -->
-    <bean class="br.com.netshoes.question2.rest.CEPResource" scope="request"/>
-    <bean class="br.com.netshoes.question2.rest.exception.CEPInvalidoExceptionMapper"/>
-   
 </beans>

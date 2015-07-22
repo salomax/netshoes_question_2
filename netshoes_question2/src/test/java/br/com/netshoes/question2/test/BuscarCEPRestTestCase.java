@@ -1,4 +1,4 @@
-package br.com.netshoes.question1.test;
+package br.com.netshoes.question2.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import br.com.netshoes.question2.entity.cep.EnderecoEntity;
+import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 import br.com.netshoes.question2.rest.AppConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
