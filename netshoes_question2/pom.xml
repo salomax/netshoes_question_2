@@ -12,6 +12,7 @@
 	<properties>
 		<junit.version>4.12</junit.version>
 		<apache.commons.version>3.4</apache.commons.version>
+		<apache.beanutils.version>1.9.2</apache.beanutils.version>
 		<mockito.version>1.10.19</mockito.version>
 		<jersey.version>2.19</jersey.version>
 		<spring3.version>3.2.14.RELEASE</spring3.version>
@@ -32,6 +33,11 @@
 		<groupId>org.apache.commons</groupId>
 		<artifactId>commons-lang3</artifactId>
 		<version>${apache.commons.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-beanutils</groupId>
+		<artifactId>commons-beanutils</artifactId>
+		<version>${apache.beanutils.version}</version>
 	</dependency>
 	
 	<!-- Spring -->

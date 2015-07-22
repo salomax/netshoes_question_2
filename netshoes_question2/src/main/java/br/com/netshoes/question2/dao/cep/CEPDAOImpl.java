@@ -3,6 +3,8 @@ package br.com.netshoes.question2.dao.cep;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import br.com.netshoes.question2.entity.endereco.EnderecoEntity;
 
 /**
@@ -35,7 +37,11 @@ public class CEPDAOImpl implements CEPDao {
 	 * Buscar endereço pelo CEP.
 	 */
 	public EnderecoEntity buscarEnderecoPorCEP(String cep) {
-		return this.enderecos.get(cep);
+		try {
+			return (EnderecoEntity) BeanUtils.cloneBean(this.enderecos.get(cep));
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	/**
